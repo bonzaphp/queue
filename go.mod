@@ -1,3 +1,3 @@
-module github.com/bonzaphp/queue/v1
+module github.com/bonzaphp/queue
 
 go 1.13
