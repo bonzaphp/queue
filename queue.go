@@ -1,8 +1,7 @@
-/**
- *
- * @Author: bonzaphp@gmail.com
- * @Date: 2020/6/15 2:34 下午
- */
+//
+// @Author: bonzaphp@gmail.com
+// @Date: 2020/6/15 2:34 下午
+//
 package queue
 
 import "errors"
