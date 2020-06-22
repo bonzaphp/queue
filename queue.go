@@ -4,7 +4,10 @@
 //
 package queue
 
-import "errors"
+import (
+	"errors"
+	"sync"
+)
 
 //定义队列接口
 type IQueue interface {
@@ -26,6 +29,7 @@ type Queue struct {
 	tail *Item
 	head *Item
 	size int
+	sync.Mutex
 }
 
 // 创建一个新队列
@@ -35,6 +39,8 @@ func New() *Queue {
 
 // 入队
 func (q *Queue) Enqueue(i *Item) {
+	q.Lock()
+	defer q.Unlock()
 	if q.tail == nil {
 		q.head = i
 		q.tail = i
@@ -47,6 +53,8 @@ func (q *Queue) Enqueue(i *Item) {
 
 // 出队
 func (q *Queue) Dequeue() (interface{}, error) {
+	q.Lock()
+	defer q.Unlock()
 	var (
 		firstNode *Item
 		value     interface{}
